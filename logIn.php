@@ -1,4 +1,4 @@
-<?php
+<?php 
     require("common.php"); 
 
     $submitted_username = ''; 
@@ -33,19 +33,28 @@
             unset($row['password']); 
 
             $_SESSION['user'] = $row; 
-             
-            header("Location: userHome.php"); 
-            die("Redirecting to: userHome.php"); 
+            
+            if(!empty($_GET['continue'])) { 
+                header("Location: " . $_GET['continue']); 
+                die("Redirecting to: " . $_GET['continue']); 
+            } else {
+                header("Location: userHome.php"); 
+                die("Redirecting to: userHome.php"); 
+            }
         } else { 
-            print("Login Failed."); 
+            print("<span style=\"color: red\">Login Failed.</span>"); 
 
             $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8'); 
         } 
     } 
-     
-?> 
+
+    if(!empty($_GET['continue'])) { 
+        echo "<p>You must log in to access this page.</p>";
+    }
+?>
+
 <h1>Login</h1> 
-<form action="logIn.php" method="post"> 
+<form action="logIn.php?continue=<?php echo $_GET['continue']?>" method="post"> 
     Username:<br /> 
     <input type="text" name="username" value="<?php echo $submitted_username; ?>" /> 
     <br /><br /> 
