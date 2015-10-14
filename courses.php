@@ -34,5 +34,5 @@
             <td><?php echo htmlentities($row['start'], ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlentities($row['end'], ENT_QUOTES, 'UTF-8'); ?></td>
         </tr> 
-    <? endforeach; ?> 
+    <?php endforeach; ?> 
 </table> 
