@@ -1,7 +1,10 @@
 <?php
     require("common.php"); 
      
-    $query = "SELECT c.id, c.title, c.status, c.start, c.end, l.name AS location FROM courses as c INNER JOIN locations AS l ON c.location = l.id"; 
+    $query = "SELECT c.id, c.title, s.description AS status, c.start, c.end, l.name AS location 
+    FROM courses as c 
+    INNER JOIN locations AS l ON c.location = l.id
+    INNER JOIN status AS s ON c.status = s.id"; 
      
     try { 
         $stmt = $db->prepare($query); 
@@ -18,7 +21,7 @@
     <tr> 
         <th>ID</th> 
         <th>Title</th> 
-        <th>Status Code</th> 
+        <th>Status</th> 
         <th>Location</th> 
         <th>Start</th> 
         <th>End</th>
