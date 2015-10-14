@@ -81,3 +81,6 @@
     <br /><br /> 
     <input type="submit" value="Create" /> 
 </form> 
+
+<br />
+<a href="admin.php">Go Back</a><br />

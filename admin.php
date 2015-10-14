@@ -7,5 +7,5 @@
  ?>
 
 <a href="users.php">Manage Users</a> <br />
-<a href="addcourse.php">Add Course</a><br />
+<a href="addCourse.php">Add Course</a><br />
 <a href="#">Manage Courses</a><br />
