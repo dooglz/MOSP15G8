@@ -1,4 +1,4 @@
-<? 
+<?php
     require("common.php"); 
      
     $query = "SELECT c.id, c.title, c.status, c.start, c.end, l.name AS location FROM courses as c INNER JOIN locations AS l ON c.location = l.id"; 
@@ -25,7 +25,7 @@
         <th>Start</th> 
         <th>End</th>
     </tr> 
-    <? foreach($rows as $row): ?> 
+    <?php foreach($rows as $row): ?> 
         <tr> 
             <td><?php echo $row['id']; ?></td> 
             <td><a href="#"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td> 

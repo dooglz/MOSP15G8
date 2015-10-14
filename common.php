@@ -1,4 +1,4 @@
-<? 
+<?php
     $username = 'mosp';
     $password = 'napier';
     $host = 'localhost';
