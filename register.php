@@ -1,5 +1,5 @@
-<?php 
-    require("common.php"); 
+<?php
+    include('preContent.php');
      
     if(!empty($_POST)) { 
         if(empty($_POST['username'])) { 
@@ -99,8 +99,8 @@
             die("Failed to run query: " . $ex->getMessage()); 
         } 
          
-        header("Location: logIn.php"); 
-        die("Redirecting to logIn.php"); 
+        echo "<meta http-equiv=\"refresh\" content=\"2; url=logIn.php\" />";
+        die("Successfully registered, please log in.");
     } 
      
 ?> 
@@ -117,3 +117,7 @@
     <br /><br /> 
     <input type="submit" value="Register" /> 
 </form>
+
+<?php
+    include('postContent.php');
+?>

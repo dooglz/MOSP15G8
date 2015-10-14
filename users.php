@@ -1,5 +1,5 @@
 <?php 
-    require("common.php"); 
+    require("preContent.php"); 
     require("secureUser.php");
      
     $query = " 
@@ -20,7 +20,7 @@
     $rows = $stmt->fetchAll(); 
 ?> 
 <h1>Memberlist</h1> 
-<table> 
+<table class="table"> 
     <tr> 
         <th>ID</th> 
         <th>Username</th> 
@@ -35,3 +35,7 @@
     <?php endforeach; ?> 
 </table> 
 <a href="admin.php">Go Back</a><br />
+
+<?php 
+    require("postContent.php"); 
+?>

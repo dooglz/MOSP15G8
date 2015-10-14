@@ -1,8 +1,10 @@
-<?php 
-    require("common.php"); 
-     
+<?php
+    include('preContent.php');
+
     unset($_SESSION['user']); 
      
-    header("Location: index.php"); 
-    die("Redirecting to: index.php");
+    echo "<meta http-equiv=\"refresh\" content=\"2; url=index.php\" />";
+                die("Logged out, redirecting.");
+
+    include('postContent.php');
 ?>

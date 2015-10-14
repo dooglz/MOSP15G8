@@ -1,6 +1,7 @@
 <?php 
-    require("common.php"); 
+    include('preContent.php');
 
+    $validationError = '';
     $submitted_username = ''; 
      
     if(!empty($_POST)) { 
@@ -35,25 +36,26 @@
             $_SESSION['user'] = $row; 
             
             if(!empty($_GET['continue'])) { 
-                header("Location: " . $_GET['continue']); 
-                die("Redirecting to: " . $_GET['continue']); 
+                echo "<meta http-equiv=\"refresh\" content=\"2; url=" . $_GET['continue'] . "\" />";
+                die("Successfully logged in, redirecting.");
             } else {
-                header("Location: userHome.php"); 
-                die("Redirecting to: userHome.php"); 
+                echo "<meta http-equiv=\"refresh\" content=\"2; url=userHome.php\" />";
+                die("Successfully logged in, redirecting.");
             }
         } else { 
-            print("<span style=\"color: red\">Login Failed.</span>"); 
-
+            $validationError = 'Login Failed';
             $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8'); 
         } 
     } 
-
-    if(!empty($_GET['continue'])) { 
-        echo "<p>You must log in to access this page.</p>";
-    }
 ?>
 
 <h1>Login</h1> 
+<?php 
+    if(!empty($_GET['continue'])) { 
+            echo "<p>You must log in to access this page.</p>";
+    }
+?>
+<span style="color: red"><?php echo $validationError; ?></span>
 <form action="logIn.php?continue=<?php echo $_GET['continue']?>" method="post"> 
     Username:<br /> 
     <input type="text" name="username" value="<?php echo $submitted_username; ?>" /> 
@@ -64,3 +66,8 @@
     <input type="submit" value="Login" /> 
 </form> 
 <a href="register.php">Register</a>
+
+
+<?php
+    include('postContent.php');
+?>

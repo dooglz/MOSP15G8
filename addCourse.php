@@ -1,5 +1,5 @@
 <?php 
-    require("common.php"); 
+    require("preContent.php"); 
 
     // Should make a secureAdmin
     require("secureUser.php");
@@ -82,5 +82,8 @@
     <input type="submit" value="Create" /> 
 </form> 
 
-<br />
-<a href="admin.php">Go Back</a><br />
+<a href="courseManagement.php">Go back?</a>
+
+<?php 
+    require("postContent.php"); 
+?>
