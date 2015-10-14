@@ -5,11 +5,6 @@
     $port = '3306';
     $dbname = 'mosp'; 
 
-    // Ask PHP to show errors for development
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(-1);
-
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'); 
 
     try { 
