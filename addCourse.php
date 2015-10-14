@@ -27,6 +27,12 @@
         if(empty($_POST['location'])) { 
             die("Please enter a course location."); 
         } 
+        if(empty($_POST['start'])) { 
+            die("Please enter a course start date."); 
+        } 
+        if(empty($_POST['end'])) { 
+            die("Please enter a course end date."); 
+        } 
 
     	$query = " 
             INSERT INTO courses ( 
@@ -41,15 +47,17 @@
                 :description, 
                 1, 
                 :location,
-                now(),
-                now() 
+                :start,
+                :end 
             ) 
         "; 
 
         $query_params = array( 
             ':name' => $_POST['name'], 
             ':description' => $_POST['description'], 
-            ':location' => $_POST['location'], 
+            ':location' => $_POST['location'],
+            ':start' => $_POST['start'],
+            ':end' => $_POST['end']
         ); 
          
         try { 
@@ -78,10 +86,20 @@
   		<option value="1"><?php echo $row['name']; ?></option>
   		<?php endforeach; ?> 
 	</select>
-    <br /><br /> 
+    <br /><br />
+    Start Date / Time <br />
+    <input name="start" size="35" type="text" value="" readonly class="form_datetime">
+    <br /><br />
+    End Date / Time <br />
+    <input name="end" size="35" type="text" value="" readonly class="form_datetime">
+    <br /> 
     <input type="submit" value="Create" /> 
 </form> 
 
+<script>
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+</script>
+<br />
 <a href="courseManagement.php">Go back?</a>
 
 <?php 

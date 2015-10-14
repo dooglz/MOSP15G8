@@ -32,8 +32,8 @@
             <td><a href="#"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td> 
             <td><?php echo htmlentities($row['status'], ENT_QUOTES, 'UTF-8'); ?></td> 
             <td><a href="#"><?php echo htmlentities($row['location'], ENT_QUOTES, 'UTF-8'); ?></a></td>
-            <td><?php echo htmlentities($row['start'], ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><?php echo htmlentities($row['end'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['start'])), ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['end'])), ENT_QUOTES, 'UTF-8'); ?></td>
         </tr> 
     <?php endforeach; ?> 
 </table> 
