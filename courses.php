@@ -1,7 +1,7 @@
 <?php
     include('preContent.php');
      
-    $query = "SELECT c.id, c.title, s.description AS status, c.start, c.end, l.name AS location 
+    $query = "SELECT c.id, c.title, s.description AS status, c.start, c.end, l.name AS locName, l.id AS locId
     FROM courses as c 
     INNER JOIN locations AS l ON c.location = l.id
     INNER JOIN status AS s ON c.status = s.id"; 
@@ -29,9 +29,9 @@
     <?php foreach($rows as $row): ?> 
         <tr> 
             <td><?php echo $row['id']; ?></td> 
-            <td><a href="#"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td> 
+            <td><a href="viewCourse.php?course=<?php echo $row['id']; ?>"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td>
             <td><?php echo htmlentities($row['status'], ENT_QUOTES, 'UTF-8'); ?></td> 
-            <td><a href="#"><?php echo htmlentities($row['location'], ENT_QUOTES, 'UTF-8'); ?></a></td>
+            <td><a href="viewLocation.php?loc=<?php echo $row['locId']; ?>"><?php echo htmlentities($row['locName'], ENT_QUOTES, 'UTF-8'); ?></a></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['start'])), ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['end'])), ENT_QUOTES, 'UTF-8'); ?></td>
         </tr> 

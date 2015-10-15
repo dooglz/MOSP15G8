@@ -45,7 +45,7 @@
             ) VALUES ( 
                 :name, 
                 :description, 
-                1, 
+                :status, 
                 :location,
                 :start,
                 :end 
@@ -55,6 +55,7 @@
         $query_params = array( 
             ':name' => $_POST['name'], 
             ':description' => $_POST['description'], 
+            ':status' => 1,
             ':location' => $_POST['location'],
             ':start' => $_POST['start'],
             ':end' => $_POST['end']
