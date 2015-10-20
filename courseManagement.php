@@ -1,5 +1,6 @@
 <?php
 	require('preContent.php');
+    require("secureAdmin.php");
 
     $query = "SELECT c.id, c.title, s.description AS status, c.start, c.end, l.name AS location 
     FROM courses as c 
