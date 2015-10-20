@@ -56,7 +56,7 @@
     }
 ?>
 <span style="color: red"><?php echo $validationError; ?></span>
-<form action="logIn.php?continue=<?php echo $_GET['continue']?>" method="post"> 
+<form action="logIn.php?continue=<?php if(!empty($_GET['continue'])) { echo $_GET['continue'];   } else { echo "userHome.php";}?>" method="post"> 
     Username:<br /> 
     <input type="text" name="username" value="<?php echo $submitted_username; ?>" /> 
     <br /><br /> 

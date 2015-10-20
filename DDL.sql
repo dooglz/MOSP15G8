@@ -46,6 +46,17 @@ INSERT INTO `courses` (`id`, `title`, `description`, `status`, `location`, `star
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `course_enrollment`
+--
+
+CREATE TABLE IF NOT EXISTS `course_enrollment` (
+  `course_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `locations`
 --
 

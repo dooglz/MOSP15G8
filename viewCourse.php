@@ -1,6 +1,11 @@
 <?php
     include('preContent.php');
 
+    if(!isset($_GET['course']) || empty($_GET['course']))  {
+        echo  "<a href='cources.php'>Go Back</a><br>";
+        die("Course get request invalid");
+    }
+
 	$query = "SELECT c.title, c.description, l.name as locName, l.id as locId
   FROM courses AS c 
   INNER JOIN locations AS l ON c.location = l.id
@@ -24,10 +29,9 @@
 <br /><br />
 <b>Number of people on course: </b>0 / 15
 <br /><br />
-<br /><br />
-
+<a href="registerForCourse.php?course=<?php echo $_GET['course']; ?>"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>
+<br />
 <a href="courses.php">Go back?</a>
-<button type="button" class="btn btn-primary">Sign up for this course!</button>
 
 <?php
     include('afterContent.php');
