@@ -29,7 +29,12 @@
 <br /><br />
 <b>Number of people on course: </b>0 / 15
 <br /><br />
-<a href="registerForCourse.php?course=<?php echo $_GET['course']; ?>"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>
+<?php 
+    if(!empty($_SESSION['user'])) { 
+        echo '<a href="registerForCourse.php?course='.$_GET['course'].'"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>';
+    }
+?>
+
 <br />
 <a href="courses.php">Go back?</a>
 

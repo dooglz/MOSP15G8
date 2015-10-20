@@ -1,8 +1,6 @@
 <?php 
     require("preContent.php"); 
-
-    // Should make a secureAdmin
-    require("secureUser.php");
+    require("secureAdmin.php");
 
 
 	$locationsQuery = "SELECT id, name FROM locations"; 

@@ -3,7 +3,7 @@
     require("secureUser.php");
     
     if(!isset($_GET['course']) || empty($_GET['course']))  {
-        echo  "<a href='cources.php'>Go Back</a><br>";
+        echo  "<a href='courses.php'>Go Back</a><br>";
         die("Course get request invalid");
     }
     $query = "SELECT * FROM course_enrollment WHERE course_id = " . $_GET['course'] ." AND user_id=". $_SESSION['user']['id']; 
