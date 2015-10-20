@@ -1,6 +1,6 @@
 <?php 
     require("preContent.php"); 
-    require("secureUser.php");
+    require("secureAdmin.php");
      
     $query = " 
         SELECT 
