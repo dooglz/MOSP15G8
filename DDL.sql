@@ -27,14 +27,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `courses` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `title` varchar(20) NOT NULL,
-  `description` varchar(500) NOT NULL,
   `status` int(11) NOT NULL,
   `location` int(11) NOT NULL,
+  `price` double NOT NULL,
   `start` datetime NOT NULL,
-  `end` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `end` datetime NOT NULL,
+  `description` varchar(200) NOT NULL,
+  `maxEnrolled` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `courses`

@@ -18,8 +18,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 		<!-- DateTime picker -->
-		<script src="/js/bootstrap-datetimepicker.js"></script>
-		<link rel="stylesheet" href="/css/bootstrap-datetimepicker.css">
+		<script src="/mosp/js/bootstrap-datetimepicker.js"></script>
+		<link rel="stylesheet" href="/mosp/css/bootstrap-datetimepicker.css">
 
 		<style>
 			body { padding-top: 70px; }
@@ -30,7 +30,7 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.php">Napier Management Training</a>
+          <a class="navbar-brand" href="<?php if(empty($_SESSION['user']))  { echo 'index.php'; } else { echo 'userHome.php'; } ?>">Napier Management Training</a>
         </div>
       </div>
     </nav>
