@@ -4,7 +4,8 @@
 
     $query = "SELECT c.id, c.title, c.start, c.end, l.name AS location 
     FROM courses as c 
-    INNER JOIN locations AS l ON c.location = l.id"; 
+    INNER JOIN locations AS l ON c.location = l.id
+    WHERE c.status = 1"; 
      
     try { 
         $stmt = $db->prepare($query); 
@@ -33,7 +34,7 @@
             <td><a href="#"><?php echo htmlentities($row['location'], ENT_QUOTES, 'UTF-8'); ?></a></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['start'])), ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['end'])), ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><a href="#">Cancel Course</a> ; <a href="#">Modify Course</a></td>
+            <td><a href="deleteCourse.php?course=<?php echo $row['id']; ?>">Cancel Course</a> ; <a href="#">Modify Course</a></td>
         </tr> 
     <?php endforeach; ?> 
 </table> 

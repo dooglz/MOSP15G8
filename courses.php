@@ -3,7 +3,8 @@
      
     $query = "SELECT c.id, c.title, c.maxEnrolled, c.start, c.end, l.name AS locName, l.id AS locId
     FROM courses as c 
-    INNER JOIN locations AS l ON c.location = l.id"; 
+    INNER JOIN locations AS l ON c.location = l.id
+    WHERE c.status = 1"; 
      
     try { 
         $stmt = $db->prepare($query); 
