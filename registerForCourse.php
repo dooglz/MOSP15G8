@@ -18,7 +18,7 @@
          
     $row = $stmt->fetch(); 
     if($row) { 
-        echo  "<a href='cources.php'>Go Back</a><br>";
+        echo  "<a href='courses.php'>Go Back</a><br>";
         die("You are already registered on this course");
     } 
     
