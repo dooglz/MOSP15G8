@@ -34,19 +34,22 @@
     }          
     $enrolled = $stmt->fetch(); 
 
-    $query3 = "SELECT count(c.user_id) as isEnrolled
-    FROM course_enrollment AS c 
-    WHERE c.user_id = " . $_SESSION['user']['id'];
-     
-    try { 
-        $stmt = $db->prepare($query3); 
-        $stmt->execute(); 
-    } 
-    catch(PDOException $ex) { 
-        die("Failed to run query: " . $ex->getMessage()); 
-    } 
+
+    if(!empty($_SESSION['user'])){
+        $query3 = "SELECT count(c.user_id) as isEnrolled
+        FROM course_enrollment AS c 
+        WHERE c.user_id = " . $_SESSION['user']['id'];
          
-    $isUserEnrolled = $stmt->fetch(); 
+        try { 
+            $stmt = $db->prepare($query3); 
+            $stmt->execute(); 
+        } 
+        catch(PDOException $ex) { 
+            die("Failed to run query: " . $ex->getMessage()); 
+        } 
+             
+        $isUserEnrolled = $stmt->fetch(); 
+    }
 ?>
 <h2><?php echo $course['title']; ?></h2>
 <br />
