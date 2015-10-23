@@ -56,7 +56,7 @@
     }
 ?>
 
-<h1>Create Course</h1> 
+<h1>Create Location</h1> 
 <form action="addLocation.php" method="post"> 
     Location Name:<br /> 
     <input type="text" name="name" value=""/> 
