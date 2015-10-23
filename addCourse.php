@@ -34,6 +34,9 @@
         if(empty($_POST['max'])) { 
             die("Please enter a max enrollment number"); 
         } 
+        if(empty($_POST['price'])) { 
+            die("Please enter a course price"); 
+        } 
 
     	$query = " 
             INSERT INTO courses ( 
@@ -42,6 +45,7 @@
                 status, 
                 location,
                 maxEnrolled,
+                price,
                 start,
                 end
             ) VALUES ( 
@@ -50,6 +54,7 @@
                 :status, 
                 :location,
                 :max,
+                :price,
                 :start,
                 :end 
             ) 
@@ -61,6 +66,7 @@
             ':status' => 1,
             ':location' => $_POST['location'],
             ':max' => $_POST['max'],
+            ':price' => $_POST['price'],
             ':start' => $_POST['start'],
             ':end' => $_POST['end']
         ); 
@@ -86,6 +92,9 @@
     <br /><br /> 
     Max attendance:<br /> 
     <input type="text" name="max" value="15"  /> 
+    <br /><br /> 
+    Price (£):<br /> 
+    <input type="text" name="price" value="0"  /> 
     <br /><br /> 
     Course Location:<br /> 
     <select name="location">
