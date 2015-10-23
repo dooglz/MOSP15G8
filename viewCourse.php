@@ -63,13 +63,16 @@
 <br /><br />
 <?php 
     if(!empty($_SESSION['user'])  && $enrolled['count'] != $course['maxEnrolled'] && $isUserEnrolled['isEnrolled'] != 1) { 
-        echo '<a href="registerForCourse.php?course='.$_GET['course'].'"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>';
+        echo '<a href="payment.php?course='.$_GET['course'].'&price='.$course['price'].'"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>';
     }
     if($isUserEnrolled['isEnrolled'] > 0) {
         echo '<a href="removeFromCourse.php?course=' . $_GET['course'] . '"><button type="submit" class="btn btn-danger">Remove myself from course</button></a>';
     }
     if($enrolled['count'] == $course['maxEnrolled']) {
         echo '<button type="submit" class="btn btn-info">This course is full.</button>';
+    }
+    if(empty($_SESSION['user'])) {
+        echo '<h4>To enrol in a course, please <a href="login.php">log in!</a></h4>';
     }
 ?>
 

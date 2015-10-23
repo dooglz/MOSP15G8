@@ -37,6 +37,6 @@
     } 
     
     echo "<meta http-equiv=\"refresh\" content=\"2; url=viewCourse.php?course=".$_GET['course']."\" />";
-    die("Successfully registered");
+    die("<h4>Payment Accepted!</h4> <br />Successfully enrolled");
  ?>
 
