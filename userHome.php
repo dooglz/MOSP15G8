@@ -2,7 +2,7 @@
     $query = "SELECT DISTINCT c.id, c.title, c.start
     FROM courses as c 
     INNER JOIN course_enrollment as ce on ce.course_id = c.id
-    WHERE c.status = 1 AND ce.user_id = 4"; 
+    WHERE c.status = 1 AND ce.user_id = ".$_SESSION['user']['id']; 
      
     try { 
         $stmt = $db->prepare($query); 
