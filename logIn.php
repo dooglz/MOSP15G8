@@ -43,7 +43,7 @@
                 echo "<meta http-equiv=\"refresh\" content=\"2; url=" . $_GET['continue'] . "\" />";
                 die("Successfully logged in, redirecting.");
             } else {
-                echo "<meta http-equiv=\"refresh\" content=\"2; url=userHome.php\" />";
+                echo "<meta http-equiv=\"refresh\" content=\"2; url=index.php\" />";
                 die("Successfully logged in, redirecting.");
             }
         } else { 
@@ -60,7 +60,7 @@
     }
 ?>
 <span style="color: red"><?php echo $validationError; ?></span>
-<form action="logIn.php?continue=<?php if(!empty($_GET['continue'])) { echo $_GET['continue'];   } else { echo "userHome.php";}?>" method="post"> 
+<form action="logIn.php?continue=<?php if(!empty($_GET['continue'])) { echo $_GET['continue'];   } else { echo "index.php";}?>" method="post"> 
     Username:<br /> 
     <input type="text" name="username" value="<?php echo $submitted_username; ?>" /> 
     <br /><br /> 
