@@ -1,11 +1,4 @@
 <?php 
-    require("preContent.php");
-    require("secureUser.php");
-    if($db === null){
-      echo $dbmsg;
-      include('postContent.php');
-      die();
-    }
     $query = "SELECT DISTINCT c.id, c.title, c.start
     FROM courses as c 
     INNER JOIN course_enrollment as ce on ce.course_id = c.id
@@ -22,11 +15,6 @@
     $rows = $stmt->fetchAll(); 
 ?> 
 
-Hello <?php echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'); ?>, this is your account management page!<br />
-
-<p><a href="courses.php">View Available Courses</a></p>
-
-
 <h3>My courses</h3>
 <ul class="list-group">
 	<?php if(count($rows) == 0){ echo "<h4>You're not registered to any courses yet.</h4>"; } ?>
@@ -41,6 +29,9 @@ Hello <?php echo htmlentities($_SESSION['user']['username'], ENT_QUOTES, 'UTF-8'
 	<a href="logOut.php">Log Out</a>
 </p>
 
-<?php 
-    require("postContent.php");
-?> 
+<?php
+if(!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0)  {
+            echo "<p><a href=\"admin.php\">Adminstrator Status</a></p>";
+        }
+
+?>

@@ -40,7 +40,7 @@
 </table> 
 
 <p> <a href="addCourse.php">Add Course</a><br />
-	<a href="admin.php">Go back?</a>
+	<a href="#" onclick="history.go(-1);">Go back?</a>
 </p>
 
 <?php

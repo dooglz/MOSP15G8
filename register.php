@@ -122,6 +122,8 @@
     <input type="submit" value="Register" /> 
 </form>
 
+<a href="#" onclick="history.go(-1);">Go back?</a>
+
 <?php
     include('postContent.php');
 ?>

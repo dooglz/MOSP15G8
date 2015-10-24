@@ -41,7 +41,6 @@
     <?php endforeach; ?> 
 </table> 
 
-
 <?php
     	include('postContent.php');
 ?>

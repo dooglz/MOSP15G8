@@ -36,8 +36,8 @@ function initMap() {
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading"><?php echo $row['name'] ?></h1>'+
       '<div id="bodyContent">'+
-      '<p></p>'+
-      '</div>'+
+      '<p>'+ $row['address'] +
+      '</p></div>'+
       '</div>';
 
   var infowindow = new google.maps.InfoWindow({
@@ -57,7 +57,7 @@ function initMap() {
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFSUDNh4BTPppKF5GJ8t6Sx0A0fzDGOJI&callback=initMap"
         async defer></script>
 
-<a href="courses.php">Go back?</a>
+<a href="#" onclick="history.go(-1);">Go back?</a>
 
 <?php
     include('postContent.php');

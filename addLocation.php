@@ -25,24 +25,30 @@
         if(empty($_POST['lon'])) { 
             die("Please enter a location longitude."); 
         } 
+        if(empty($_POST['address'])) { 
+            die("Please enter a location address."); 
+        } 
 
 
     	$query = " 
             INSERT INTO locations ( 
                 name, 
                 lat, 
-                lon
+                lon,
+                address
             ) VALUES ( 
                 :name, 
                 :lat, 
-                :lon
+                :lon,
+                :address
             ) 
         "; 
 
         $query_params = array( 
             ':name' => $_POST['name'], 
             ':lat' => $_POST['lat'], 
-            ':lon' => $_POST['lon']
+            ':lon' => $_POST['lon'],
+            ':address' => $_POST['address']
         ); 
          
         try { 
@@ -65,6 +71,9 @@
     <input type="text" name="lat" value=""  /> 
     <br /><br /> 
     Longitude:<br /> 
+    <input type="text" name="lon" value=""  /> 
+    <br /><br /> 
+    Address:<br /> 
     <input type="text" name="lon" value=""  /> 
     <br /><br /> 
     <input type="submit" value="Create" /> 

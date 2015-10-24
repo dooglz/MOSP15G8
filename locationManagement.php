@@ -39,7 +39,7 @@
     <?php endforeach; ?> 
 </table> 
 <a href="addLocation.php">Add Location</a><br />
-<a href="admin.php">Go Back</a><br />
+<a href="#" onclick="history.go(-1);">Go back?</a><br />
 
 <?php 
     require("postContent.php"); 
