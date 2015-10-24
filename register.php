@@ -1,6 +1,10 @@
 <?php
     include('preContent.php');
-     
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     if(!empty($_POST)) { 
         if(empty($_POST['username'])) { 
             die("Please enter a username."); 

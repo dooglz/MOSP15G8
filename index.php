@@ -1,4 +1,5 @@
 <?php
+  $activePage = "home";
 	include('preContent.php');
 	require("common.php");
 
@@ -17,7 +18,6 @@
 <a href="courses.php">View Courses</a>
 </p>
 
-
 <?php
-	include('afterContent.php');
+	include('postContent.php');
 ?>

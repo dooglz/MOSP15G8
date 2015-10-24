@@ -1,18 +1,26 @@
 <?php
-    include('preContent.php');
-
-
+  include('preContent.php');
+  if(!isset($_GET['loc']) || empty($_GET['loc']))  {
+    echo  "Location get request invalid<br><a href='courses.php'>Go Back</a><br>";
+    include('postContent.php');
+    die();
+  }
+  if($db === null){
+    echo $dbmsg;
+    include('postContent.php');
+    die();
+  }
 	$query = "SELECT * FROM locations WHERE locations.id = " . $_GET['loc']; 
-     
-    try { 
-        $stmt = $db->prepare($query); 
-        $stmt->execute(); 
-    } 
-    catch(PDOException $ex) { 
-        die("Failed to run query: " . $ex->getMessage()); 
-    } 
+    
+  try { 
+      $stmt = $db->prepare($query); 
+      $stmt->execute(); 
+  } 
+  catch(PDOException $ex) { 
+      die("Failed to run query: " . $ex->getMessage()); 
+  } 
          
-    $row = $stmt->fetch(); 
+  $row = $stmt->fetch(); 
 ?>
 <div id="map" style="height: 70%;"></div>
 <script>
@@ -52,7 +60,7 @@ function initMap() {
 <a href="courses.php">Go back?</a>
 
 <?php
-    include('afterContent.php');
+    include('postContent.php');
 ?>
 
 

@@ -1,11 +1,15 @@
 <?php
     include('preContent.php');
 
-    if(!isset($_GET['course']) || empty($_GET['course']))  {
-        echo  "<a href='courses.php'>Go Back</a><br>";
-        die("Course get request invalid");
-    }
-
+  if(!isset($_GET['course']) || empty($_GET['course']))  {
+      echo  "<a href='courses.php'>Go Back</a><br>";
+      die("Course get request invalid");
+  }
+  if($db === null){
+    echo $dbmsg;
+    include('postContent.php');
+    die();
+  }
 	$query = "SELECT c.title, c.description, c.price, c.maxEnrolled, l.name as locName, l.id as locId
     FROM courses AS c 
     INNER JOIN locations AS l ON c.location = l.id
@@ -80,7 +84,7 @@
 <a href="courses.php">Go back?</a>
 
 <?php
-    include('afterContent.php');
+   include('postContent.php');
 ?>
 
 

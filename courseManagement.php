@@ -44,5 +44,5 @@
 </p>
 
 <?php
-    include('afterContent.php');
+   include('postContent.php');
 ?>

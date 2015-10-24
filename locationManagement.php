@@ -1,7 +1,11 @@
 <?php 
     require("preContent.php"); 
     require("secureAdmin.php");
-     
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     $query = " 
         SELECT * FROM locations
     "; 

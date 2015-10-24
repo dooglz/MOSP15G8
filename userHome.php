@@ -1,7 +1,11 @@
 <?php 
     require("preContent.php");
     require("secureUser.php");
-
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     $query = "SELECT DISTINCT c.id, c.title, c.start
     FROM courses as c 
     INNER JOIN course_enrollment as ce on ce.course_id = c.id

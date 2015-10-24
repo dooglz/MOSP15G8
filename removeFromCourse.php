@@ -22,7 +22,7 @@
 <a href="courses.php">Go back?</a>
 
 <?php
-    include('afterContent.php');
+   include('postContent.php');
 ?>
 
 

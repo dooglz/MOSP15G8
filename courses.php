@@ -1,20 +1,25 @@
 <?php
-    include('preContent.php');
-     
-    $query = "SELECT c.id, c.title, c.maxEnrolled, c.start, c.end, l.name AS locName, l.id AS locId
-    FROM courses as c 
-    INNER JOIN locations AS l ON c.location = l.id
-    WHERE c.status = 1"; 
-     
-    try { 
-        $stmt = $db->prepare($query); 
-        $stmt->execute(); 
-    } 
+  include('preContent.php');
+  if($db === null){
+    echo $dbmsg;
+    include('postContent.php');
+    die();
+  }
+  
+  $query = "SELECT c.id, c.title, c.maxEnrolled, c.start, c.end, l.name AS locName, l.id AS locId
+  FROM courses as c 
+  INNER JOIN locations AS l ON c.location = l.id
+  WHERE c.status = 1"; 
+  
+  try { 
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+  } 
     catch(PDOException $ex) { 
-        die("Failed to run query: " . $ex->getMessage()); 
-    } 
-         
-    $rows = $stmt->fetchAll(); 
+    die("Failed to run query: " . $ex->getMessage()); 
+  } 
+    
+  $rows = $stmt->fetchAll(); 
 ?> 
 <h1>Course List</h1> 
 <table class="table"> 
@@ -38,5 +43,5 @@
 
 
 <?php
-    include('afterContent.php');
+    	include('postContent.php');
 ?>

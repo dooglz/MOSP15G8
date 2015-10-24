@@ -1,6 +1,10 @@
 <?php
     include('preContent.php');
-
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     if(!isset($_GET['course']) || empty($_GET['course']))  {
         echo  "<a href='courseManagement.php'>Go Back</a><br>";
         die("Request invalid");
@@ -24,7 +28,7 @@
 <a href="courseManagement.php">Go back?</a>
 
 <?php
-    include('afterContent.php');
+   include('postContent.php');
 ?>
 
 

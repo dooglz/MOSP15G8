@@ -1,6 +1,10 @@
 <?php 
     include('preContent.php');
-
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     $validationError = '';
     $submitted_username = ''; 
      
@@ -46,7 +50,7 @@
             $validationError = 'Login Failed';
             $submitted_username = htmlentities($_POST['username'], ENT_QUOTES, 'UTF-8'); 
         } 
-    } 
+    }
 ?>
 
 <h1>Login</h1> 

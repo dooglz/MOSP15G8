@@ -1,7 +1,11 @@
 <?php 
     require("preContent.php"); 
     require("secureUser.php");
-    
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
     if(!isset($_GET['course']) || empty($_GET['course']))  {
         echo  "<a href='courses.php'>Go Back</a><br>";
         die("Course get request invalid");
