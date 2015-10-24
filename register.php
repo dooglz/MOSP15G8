@@ -4,18 +4,18 @@
       echo $dbmsg;
       include('postContent.php');
       die();
-    }
-    if(!empty($_POST)) { 
+    }      
+    function Register($db) {
         if(empty($_POST['username'])) { 
-            die("Please enter a username."); 
+            return("Please enter a username."); 
         } 
          
         if(empty($_POST['password'])) { 
-            die("Please enter a password."); 
+            return("Please enter a password."); 
         } 
          
         if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) { 
-            die("Invalid E-Mail Address"); 
+           return("Invalid E-Mail Address"); 
         } 
          
         $query = " 
@@ -34,13 +34,14 @@
             $stmt = $db->prepare($query); 
             $result = $stmt->execute($query_params); 
         } catch(PDOException $ex) { 
-            die("Failed to run query: " . $ex->getMessage()); 
+            return("Failed to run query: " . $ex->getMessage()); 
+
         } 
 
         $row = $stmt->fetch(); 
          
         if($row) { 
-            die("This username is already in use"); 
+            return("This username is already in use"); 
         } 
 
         $query = " 
@@ -59,13 +60,13 @@
             $stmt = $db->prepare($query); 
             $result = $stmt->execute($query_params); 
         } catch(PDOException $ex) { 
-            die("Failed to run query: " . $ex->getMessage()); 
+            return("Failed to run email query: " . $ex->getMessage()); 
         } 
          
         $row = $stmt->fetch(); 
          
         if($row) { 
-            die("This email address is already registered"); 
+            return("This email address is already registered"); 
         } 
          
         $query = " 
@@ -100,30 +101,33 @@
             $stmt = $db->prepare($query); 
             $result = $stmt->execute($query_params); 
         } catch(PDOException $ex) { 
-            die("Failed to run query: " . $ex->getMessage()); 
+            return("Failed to run Register query: " . $ex->getMessage()); 
         } 
          
         echo "<meta http-equiv=\"refresh\" content=\"2; url=logIn.php\" />";
-        die("Successfully registered, please log in.");
+        return("Successfully registered, please log in.");
     } 
-     
+    $validationError = "";
+    if(!empty($_POST)) { 
+      $validationError = Register($db);
+    }
 ?> 
-<h1>Register</h1> 
-<form action="register.php" method="post"> 
-    Username:<br /> 
-    <input type="text" name="username" value="" /> 
-    <br /><br /> 
-    E-Mail:<br /> 
-    <input type="text" name="email" value="" /> 
-    <br /><br /> 
-    Password:<br /> 
-    <input type="password" name="password" value="" /> 
-    <br /><br /> 
-    <input type="submit" value="Register" /> 
-</form>
-
-<a href="#" onclick="history.go(-1);">Go back?</a>
-
+<div class="col-md-8 col-md-offset-2">
+  <h1>Register</h1> 
+  <span style="color: red"><?php echo $validationError; ?></span>
+  <form action="register.php" method="post"> 
+      Username:<br /> 
+      <input type="text" name="username" value="" /> 
+      <br />
+      E-Mail:<br /> 
+      <input type="text" name="email" value="" /> 
+      <br />
+      Password:<br /> 
+      <input type="password" name="password" value="" /> 
+      <br /><br /> 
+      <input type="submit" class="btn btn-primary" value="Register New Account" /> 
+  </form>
+</div>
 <?php
     include('postContent.php');
 ?>
