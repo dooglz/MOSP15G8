@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="header-logo">
-                    <a href="index.html">
+                    <a href="index.php">
                         <h2>Napier Management Training</h2>
                     </a>
                 </div>
