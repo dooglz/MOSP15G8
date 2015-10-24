@@ -74,7 +74,7 @@
     <input type="text" name="lon" value=""  /> 
     <br /><br /> 
     Address:<br /> 
-    <input type="text" name="lon" value=""  /> 
+    <input type="text" name="address" value=""  /> 
     <br /><br /> 
     <input type="submit" value="Create" /> 
 </form> 

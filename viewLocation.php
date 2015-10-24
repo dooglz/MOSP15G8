@@ -20,12 +20,12 @@
       die("Failed to run query: " . $ex->getMessage()); 
   } 
          
-  $row = $stmt->fetch(); 
+  $location = $stmt->fetch(); 
 ?>
 <div id="map" style="height: 70%;"></div>
 <script>
 function initMap() {
-  var loc = <?php echo "{lat: ". $row['lat'] . ", lng: " . $row['lon'] . "};"; ?>
+  var loc = <?php echo "{lat: ". $location['lat'] . ", lng: " . $location['lon'] . "};"; ?>
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 14,
     center: loc
@@ -34,9 +34,9 @@ function initMap() {
   var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading"><?php echo $row['name'] ?></h1>'+
+      '<h1 id="firstHeading" class="firstHeading"><?php echo $location['name']; ?></h1>'+
       '<div id="bodyContent">'+
-      '<p>'+ $row['address'] +
+      '<p><?php echo $location['address']; ?>'+
       '</p></div>'+
       '</div>';
 
