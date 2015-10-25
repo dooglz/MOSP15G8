@@ -22,7 +22,5 @@
         </div>
     </div>
 </footer>
-<!-- CORE JQUERY SCRIPTS -->
-<script src="js/jquery-1.11.1.js"></script>
 </body>
 </html>

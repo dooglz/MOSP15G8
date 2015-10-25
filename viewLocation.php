@@ -22,7 +22,7 @@
          
   $location = $stmt->fetch(); 
 ?>
-<div id="map" style="height: 70%;"></div>
+<div id="map" style="width:100%; height:500px"></div>
 <script>
 function initMap() {
   var loc = <?php echo "{lat: ". $location['lat'] . ", lng: " . $location['lon'] . "};"; ?>

@@ -82,12 +82,12 @@
       echo '<button type="submit" class="btn btn-info">This course is full.</button>';
     }
   }else{
-    echo '<h4>To enrol in a course, please <a href="login.php">log in!</a></h4>';
+    echo '<h4>To enrol in a course, please <a href="logIn.php">log in!</a></h4>';
   }
 ?>
 
 <br />
-a href="courses.php">Go back?</a>
+<a href="courses.php">Go back?</a>
 
 <?php
   include('postContent.php');
