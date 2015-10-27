@@ -1,5 +1,5 @@
 <?php 
-
+    $activePage = "locations";
     require("preContent.php"); 
 
     if($db === null){
