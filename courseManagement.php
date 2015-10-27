@@ -30,7 +30,7 @@
     <?php foreach($rows as $row): ?> 
         <tr> 
             <td><?php echo $row['id']; ?></td> 
-            <td><a href="#"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td> 
+            <td><a href="editCourse.php?courseID=<?php echo $row['id']; ?>"><?php echo htmlentities($row['title'], ENT_QUOTES, 'UTF-8'); ?></a></td> 
             <td><?php echo $row['location']; ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['start'])), ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['end'])), ENT_QUOTES, 'UTF-8'); ?></td>
