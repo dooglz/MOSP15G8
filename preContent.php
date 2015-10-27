@@ -1,6 +1,8 @@
 <?php 
     require("common.php"); 
     $activePage = isset($activePage) ? $activePage : "";
+    $loggedIn = !empty($_SESSION['user']);
+    $isAdmin = isset($isAdmin) ? $isAdmin :  $loggedIn && (!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0);
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,8 +68,20 @@
                             <li><a <?php if($activePage == "locations"){echo "class='menu-top-active' ";}?>href="allLocations.php">Locations</a></li>
                             <li><a <?php if($activePage == "forum"){echo "class='menu-top-active' ";}?>href="#">Forum</a></li>
                             <li><a <?php if($activePage == "login"){echo "class='menu-top-active' ";}?>href=
-                            <?php if(empty($_SESSION['user']))  {echo '"logIn.php">Login';}else{echo '"userHome.php">Account';}?>
+                            <?php if(!$loggedIn)  {echo '"logIn.php">Login';}else{echo '"userHome.php">Account';}?>
                             </a></li>
+                            
+                                  <?php
+                            if($isAdmin)  {
+                             echo "<li><a ";
+                             if(
+                                 $activePage == "admin"){
+                                     echo "class='menu-top-active' ";
+                                 }
+                                 echo 'ref="#">Admin</a></li>';
+                            }
+                            ?>
+                            
                         </ul>
                     </div>
                 </div>
@@ -75,17 +89,14 @@
         </div>
     </section>
       <?php
-    if(!empty($_SESSION['user']))  {
+    if($loggedIn)  {
       echo '<section><div class="container"><div class="col-md-12 menu-username">';
       echo "You are logged in as: <b>".$_SESSION['user']['username']."</b>";
-      if(!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0)  {
-            echo ", Adminstrator Status Granted";
-        }
+      if($isAdmin)  {echo ", Adminstrator Status Granted";}
       echo ', <a href="logOut.php">Log Out</a>';
       echo '</div></div></div></section>'; 
     }
   ?>
-    <!-- MENU SECTION END-->
-     <div class="content-wrapper">
-               <div class="container">
-    
+<!-- MENU SECTION END-->
+<div class="content-wrapper">
+<div class="container"> 

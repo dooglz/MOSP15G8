@@ -39,7 +39,7 @@
     $enrolled = $stmt->fetch(); 
   
   
-    if(!empty($_SESSION['user'])){
+    if($loggedIn){
         $query3 = "SELECT count(c.user_id) as isEnrolled
         FROM course_enrollment AS c 
         WHERE c.course_id = " . $_GET['course'] . " && c.user_id = " . $_SESSION['user']['id'];
@@ -71,7 +71,7 @@
 <br /><br />
 
 <?php 
-  if(!empty($_SESSION['user'])){
+  if($loggedIn){
     if($enrolled['count'] != $course['maxEnrolled'] && $isUserEnrolled['isEnrolled'] != 1) { 
       echo '<a href="payment.php?course='.$_GET['course'].'&price='.$course['price'].'"><button type="submit" class="btn btn-primary ">Sign up for this course!</button></a>';
     }
