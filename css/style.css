@@ -169,6 +169,11 @@ header {
 
 /* MENU LINKS SECTION*/
 
+.menu-username {
+    background-color:#FFF;
+     text-align: right;
+}
+
 .menu-section {
     background-color: #3D3D3D;
 }

@@ -72,6 +72,17 @@
             </div>
         </div>
     </section>
+      <?php
+    if(!empty($_SESSION['user']))  {
+      echo '<section><div class="container"><div class="col-md-12 menu-username">';
+      echo "You are logged in as: <b>".$_SESSION['user']['username']."</b>";
+      if(!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0)  {
+            echo ", Adminstrator Status Granted";
+        }
+      echo ', <a href="logOut.php">Log Out</a>';
+      echo '</div></div></div></section>'; 
+    }
+  ?>
     <!-- MENU SECTION END-->
      <div class="content-wrapper">
                <div class="container">

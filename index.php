@@ -6,13 +6,6 @@
 
 
 <div class="col-md-6">
-  <?php
-    if(empty($_SESSION['user']))  {
-      echo "You are not logged in! <a href=\"logIn.php\">Log in</a>";
-    } else {
-      include('userHome.php');
-    }
-  ?>
   <h4>About us</h4>
   <p>
     Napier Management Training ia a company who specialises in delivering world class management training programmes. 
