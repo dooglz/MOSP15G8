@@ -1,6 +1,6 @@
 <?php
   include('preContent.php');
-  
+  $activePage = "courses";
   if($db === null){
     echo $dbmsg;
     include('postContent.php');

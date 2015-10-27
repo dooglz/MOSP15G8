@@ -1,12 +1,12 @@
 <?php 
-     require("preContent.php"); 
-
+    require("preContent.php"); 
+    require("secureUser.php"); 
+    $activePage = "account";
     if($db === null){
-      echo $dbmsg;
-      include('postContent.php');
-      die();
+        echo $dbmsg;
+        include('postContent.php');
+        die();
     }
-
 
     $query = "SELECT DISTINCT c.id, c.title, c.start
     FROM courses as c 
@@ -24,23 +24,36 @@
     $rows = $stmt->fetchAll(); 
 ?> 
 
-<h3>My courses</h3>
-<ul class="list-group">
-	<?php if(count($rows) == 0){ echo "<h4>You're not registered to any courses yet.</h4>"; } ?>
-	<?php foreach($rows as $row): ?> 
-		<li class="list-group-item"><a href="viewCourse.php?course=<?php echo $row['id'] . "\">". $row['title'] . " - <i>" . $row['start']; ?></i></a></li>
-	<?php endforeach; ?>
-</ul>
-
-
-
-<p>
-	<a href="logOut.php">Log Out</a>
-</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               My courses
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <?php if(count($rows) == 0){ echo "<h4>You're not registered to any courses yet.</h4>"; } ?>
+                    <?php foreach($rows as $row): ?> 
+                        <li class="list-group-item"><a href="viewCourse.php?course=<?php echo $row['id'] . "\">". $row['title'] . " - <i>" . $row['start']; ?></i></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Other stuff
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+ </div>
+<div class="row">
+	<a href="logOut.php"><button class="btn btn-info">Log Out</button></a>
+ </div>
 
 <?php
-if(!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0)  {
-            echo "<p><a href=\"admin.php\">Adminstrator Status</a></p>";
-        }
- require("postContent.php"); 
+    require("postContent.php"); 
 ?>

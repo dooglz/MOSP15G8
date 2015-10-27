@@ -1,7 +1,6 @@
 <?php
-  $activePage = "home";
+    $activePage = "home";
 	include('preContent.php');
-	require("common.php");
 ?>
 
 
