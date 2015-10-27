@@ -1,5 +1,6 @@
 <?php
   include('preContent.php');
+  
   if($db === null){
     echo $dbmsg;
     include('postContent.php');

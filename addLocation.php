@@ -2,6 +2,11 @@
     require("preContent.php"); 
     require("secureAdmin.php");
 
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
 
 	$locationsQuery = "SELECT id, name FROM locations"; 
      

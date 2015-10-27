@@ -66,15 +66,20 @@ CREATE TABLE IF NOT EXISTS `locations` (
 `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `lat` varchar(30) NOT NULL,
-  `lon` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `lon` varchar(30) NOT NULL,
+  `address` varchar(500) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
 
 --
 -- Dumping data for table `locations`
 --
 
-INSERT INTO `locations` (`id`, `name`, `lat`, `lon`) VALUES
-(1, 'Napier University', '55.933212', '-3.212988');
+INSERT INTO `locations` (`id`, `name`, `lat`, `lon`, `address`) VALUES
+(1, 'Edinburgh', '55.94613', '-3.212864', 'Conference House, 152 Morrison Street, The Exchange, Edinburgh, EH3 8EB'),
+(2, 'Glasgow', '55.8622794', '-4.2594973', '151 West George Street, Glasgow, G2 2JJ'),
+(3, 'Aberdeen', '57.199444', '-2.2102891', 'Aberdeen Airport, Cirrus Building, 6 International Avenue, ABZ Business Park, Dyce Drive, Dyce, Aberdeen, AB21 0BH');
+
 
 -- --------------------------------------------------------
 
@@ -109,9 +114,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `permissionLevel` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Indexes for dumped tables
---
+
+INSERT INTO `users` (`id`, `username`, `password`, `salt`, `email`, `permissionLevel`) VALUES
+(1, 'admin', '46b9666a9d18d8b788d1ecfa0864608902fe0e01bd9a4d6e396b54e8915c2449', '60c6f20963b8917b', 'admin@admin.com', 0),
+(2, 'user', '11cc1a4d0047afbb9551b479ea7e3809362b5aaea6ebe832b1ed0402b65cb98a', '7534ee0a6d91d994', 'user@user.com', 0);
+
 
 --
 -- Indexes for table `courses`
