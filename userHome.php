@@ -1,4 +1,13 @@
 <?php 
+     require("preContent.php"); 
+
+    if($db === null){
+      echo $dbmsg;
+      include('postContent.php');
+      die();
+    }
+
+
     $query = "SELECT DISTINCT c.id, c.title, c.start
     FROM courses as c 
     INNER JOIN course_enrollment as ce on ce.course_id = c.id
@@ -33,5 +42,5 @@
 if(!empty($_SESSION['user']['permissionLevel']) && $_SESSION['user']['permissionLevel'] >0)  {
             echo "<p><a href=\"admin.php\">Adminstrator Status</a></p>";
         }
-
+ require("postContent.php"); 
 ?>
