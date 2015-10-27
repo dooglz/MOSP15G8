@@ -2,13 +2,62 @@
     $activePage = "admin";
     require("preContent.php"); 
     require("secureAdmin.php");
+
+    // Number of users
+    $query = "SELECT count(id) as num
+    FROM users";
+    try { 
+        $stmt = $db->prepare($query); 
+        $stmt->execute(); 
+    } 
+    catch(PDOException $ex) { 
+        die("Failed to run query: " . $ex->getMessage()); 
+    }  
+    $numOfUsers = $stmt->fetch();
+
+    // Users enrolled
+    $query = "SELECT count(DISTINCT user_id) as num
+    FROM course_enrollment";
+    try { 
+        $stmt = $db->prepare($query); 
+        $stmt->execute(); 
+    } 
+    catch(PDOException $ex) { 
+        die("Failed to run query: " . $ex->getMessage()); 
+    }  
+    $numEnrolled = $stmt->fetch();
+
+    // Courses
+    $query = "SELECT count(DISTINCT id) as num
+    FROM courses WHERE status = 1";
+    try { 
+        $stmt = $db->prepare($query); 
+        $stmt->execute(); 
+    } 
+    catch(PDOException $ex) { 
+        die("Failed to run query: " . $ex->getMessage()); 
+    }  
+    $courses = $stmt->fetch();
+
+    // Locations
+    $query = "SELECT count(DISTINCT id) as num
+    FROM locations";
+    try { 
+        $stmt = $db->prepare($query); 
+        $stmt->execute(); 
+    } 
+    catch(PDOException $ex) { 
+        die("Failed to run query: " . $ex->getMessage()); 
+    }  
+    $locations = $stmt->fetch();
+
  ?>
  
 <div class="row">
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Adminstrator Functions
+                Administrator Functions
             </div>
             <div class="panel-body">
                 <a href="users.php">Manage Users</a> <br />
@@ -23,10 +72,10 @@
                 Site Status
             </div>
             <div class="panel-body">
-                Registered Users: 10 <br>
-                Users Enrolled on Courses: 10<br>
-                Total Courses: 10<br>
-                Course Locations: 3<br>
+                Registered Users: <?php echo $numOfUsers['num']; ?><br>
+                Users Enrolled on Courses: <?php echo $numEnrolled['num']; ?><br>
+                Total Courses: <?php echo $courses['num']; ?><br>
+                Course Locations: <?php echo $locations['num']; ?><br>
             </div>
         </div>
     </div>
