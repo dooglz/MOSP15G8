@@ -27,7 +27,6 @@
         <th>Address</th>
         <th>Latitude</th> 
         <th>Longitude</th>
-        <th>&nbsp;</th>
     </tr> 
     <?php foreach($rows as $row): ?> 
         <tr> 
@@ -36,7 +35,6 @@
             <td><?php echo htmlentities($row['address'], ENT_QUOTES, 'UTF-8'); ?></td> 
             <td><?php echo htmlentities($row['lat'], ENT_QUOTES, 'UTF-8'); ?></td> 
             <td><?php echo htmlentities($row['lon'], ENT_QUOTES, 'UTF-8'); ?></td> 
-            <td><a href="#">Delete Location</a></td> 
         </tr> 
     <?php endforeach; ?> 
 </table> 

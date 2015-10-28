@@ -25,7 +25,7 @@
 ?> 
 <div class="row">
     <div class="col-md-12">
-        <h1>Memberlist</h1> 
+        <h1>Member List</h1> 
         <table class="table"> 
             <tr> 
                 <th>ID</th> 
@@ -42,6 +42,7 @@
         </table> 
     </div>
 </div>
+<a href="admin.php">Go Back?</a>
 
 <?php 
     require("postContent.php"); 
