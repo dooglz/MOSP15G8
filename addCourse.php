@@ -88,7 +88,7 @@
     <input type="text" name="name" value=""/> 
     <br /><br /> 
     Course Description:<br /> 
-    <input type="text" name="description" value=""  /> 
+    <td><textarea rows="4" cols="50" maxlength="20000" name="description"></textarea></td> 
     <br /><br /> 
     Max attendance:<br /> 
     <input type="text" name="max" value="15"  /> 
@@ -100,7 +100,7 @@
     <select name="location">
   		<option value="">Select...</option>
   		<?php foreach($locations as $row): ?> 
-  		<option value="1"><?php echo $row['name']; ?></option>
+  		    <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
   		<?php endforeach; ?> 
 	</select>
     <br /><br />

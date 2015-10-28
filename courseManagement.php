@@ -34,7 +34,7 @@
             <td><?php echo $row['location']; ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['start'])), ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlentities(date( 'd/m/Y H:i', strtotime($row['end'])), ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><a href="deleteCourse.php?course=<?php echo $row['id']; ?>">Cancel Course</a> ; <a href="#">Modify Course</a></td>
+            <td><a href="deleteCourse.php?course=<?php echo $row['id']; ?>">Cancel Course</a></td>
         </tr> 
     <?php endforeach; ?> 
 </table> 
