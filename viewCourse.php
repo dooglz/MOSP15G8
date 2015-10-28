@@ -10,7 +10,7 @@
     include('postContent.php');
     die();
   }
-  $query = "SELECT c.title, c.description, c.price, c.maxEnrolled, l.name as locName, l.id as locId
+  $query = "SELECT c.title, c.description, c.start, c.end, c.price, c.maxEnrolled, l.name as locName, l.id as locId
     FROM courses AS c 
     INNER JOIN locations AS l ON c.location = l.id
     WHERE c.id = " . $_GET['course'];
@@ -59,6 +59,9 @@
 <br />
 <b>Description: </b>
 <?php echo $course['description']; ?>
+<br /><br />
+<b>Dates: </b>
+<?php echo htmlentities(date( 'd/m/Y H:i', strtotime($course['start'])), ENT_QUOTES, 'UTF-8')."  -  ".htmlentities(date( 'd/m/Y H:i', strtotime($course['end'])), ENT_QUOTES, 'UTF-8'); ?>
 <br /><br />
 <b>Price: </b> £<?php echo $course['price']; ?>
 <br /><br />

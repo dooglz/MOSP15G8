@@ -2,6 +2,32 @@
 	require('preContent.php');
     require("secureAdmin.php");
 
+    if(!empty($_POST)) {
+        $query = " 
+            UPDATE locations
+            SET name = :name, 
+                address = :address, 
+                lat = :lat, 
+                lon = :lon
+            WHERE id =".$_GET['location']; 
+
+        $query_params = array( 
+            ':name' => $_POST['name'], 
+            ':address' => $_POST['address'], 
+            ':lat' => $_POST['lat'],
+            ':lon' => $_POST['lng']
+        ); 
+         
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params); 
+        } catch(PDOException $ex) { 
+            die("Failed to run query: " . $ex->getMessage()); 
+        } 
+
+        echo "Location Updated";
+    }
+
     $query = "SELECT c.id, c.title, c.start, c.end, l.name AS location 
     FROM courses as c 
     INNER JOIN locations AS l ON c.location = l.id
@@ -36,7 +62,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Location Info
+                Update Location Info
             </div>
             <form action="locationTimetable.php?location=<?php echo $_GET['location']; ?>" method="post"> 
                 <table class="table">  
@@ -48,11 +74,11 @@
                         <th>Lng</th>
                     </tr><tr> 
                         <td><?php echo $location['id']; ?></td> 
-                        <td><input type="text" name="name" value="<?php echo htmlentities($location['name'], ENT_QUOTES, 'UTF-8'); ?>"/></td> 
-                        <td><input type="text" size="20" name="address" value="<?php echo $location['address']; ?>"  /></td>
-                        <td><input type="text" size="10" name="lat" value="<?php echo $location['lat']; ?>"  /></td>
-                        <td><input type="text" size="10" name="lng" value="<?php echo $location['lon']; ?>"  /></td>
-                        <td><input type="submit" value="Save" /> </td>
+                        <td><input type="text" name="name" class="form-control" value="<?php echo htmlentities($location['name'], ENT_QUOTES, 'UTF-8'); ?>"/></td> 
+                        <td><input type="text" size="20" class="form-control" name="address" value="<?php echo $location['address']; ?>"  /></td>
+                        <td><input type="text" size="10" class="form-control" name="lat" value="<?php echo $location['lat']; ?>"  /></td>
+                        <td><input type="text" size="10" class="form-control" name="lng" value="<?php echo $location['lon']; ?>"  /></td>
+                        <td><input type="submit" value="Save" class="btn-primary"/> </td>
                     </tr>  
                 </table>
             </form>

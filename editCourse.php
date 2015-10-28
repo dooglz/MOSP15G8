@@ -1,6 +1,40 @@
 <?php 
     require("preContent.php"); 
     require("secureAdmin.php");
+
+    if(!empty($_POST)) {
+        $query = " 
+            UPDATE courses
+            SET title = :name, 
+                description = :description, 
+                status = :status, 
+                location = :location,
+                maxEnrolled = :max,
+                price = :price,
+                start = :start,
+                end = :end
+            WHERE id =".$_GET['courseID']; 
+
+        $query_params = array( 
+            ':name' => $_POST['name'], 
+            ':description' => $_POST['description'], 
+            ':status' => 1,
+            ':location' => $_POST['location'],
+            ':max' => $_POST['max'],
+            ':price' => $_POST['price'],
+            ':start' => $_POST['start'],
+            ':end' => $_POST['end']
+        ); 
+         
+        try { 
+            $stmt = $db->prepare($query); 
+            $result = $stmt->execute($query_params); 
+        } catch(PDOException $ex) { 
+            die("Failed to run query: " . $ex->getMessage()); 
+        } 
+
+        echo "Course Updated";
+    }
     
     if(!isset($_GET['courseID']) || empty($_GET['courseID']))  {
         echo  "<a href='users.php'>Go Back</a><br>";
@@ -13,7 +47,7 @@
       die();
     }
     
-    $query = "SELECT c.id, c.description, c.title, c.price, c.start, c.end, l.name AS location, l.id as locID
+    $query = "SELECT c.id, c.description, c.maxEnrolled as max, c.title, c.price, c.start, c.end, l.name AS location, l.id as locID
         FROM courses as c 
         INNER JOIN locations AS l ON c.location = l.id
         WHERE c.id =" .$_GET['courseID']; 
@@ -59,7 +93,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Course Info
+                Updating Course Info
             </div>
             <form action="editCourse.php?courseID=<?php echo $_GET['courseID']; ?>" method="post"> 
                 <table class="table">  
@@ -69,14 +103,15 @@
                         <th>Description</th>
                         <th>Location</th>
                         <th>Price</th> 
+                        <th>Max People</th>
                         <th>Start</th> 
                         <th>End</th>
                         <th>&nbsp;</th>
                     </tr><tr> 
                         <td><?php echo $course['id']; ?></td> 
-                        <td><input type="text" name="name" value="<?php echo htmlentities($course['title'], ENT_QUOTES, 'UTF-8'); ?>"/></td> 
-                        <td><textarea maxlength="2000"  name="description"><?php echo htmlentities($course['description'], ENT_QUOTES, 'UTF-8'); ?></textarea></td> 
-                        <td><select name="location">
+                        <td><input type="text" size="10" class="form-control" name="name" value="<?php echo htmlentities($course['title'], ENT_QUOTES, 'UTF-8'); ?>"/></td> 
+                        <td><textarea maxlength="2000" class="form-control" name="description" class="form-control"><?php echo htmlentities($course['description'], ENT_QUOTES, 'UTF-8'); ?></textarea></td> 
+                        <td><select name="location" class="form-control">
                             <option value="">Select...</option>
                             <?php foreach($locations as $lRow): ?> 
                             <option value='<?php echo $lRow['id']; ?>' 
@@ -86,13 +121,17 @@
                                 } ?> > <?php echo $lRow['name']; ?></option>
                             <?php endforeach; ?> 
                         </select></td>
-                        <td><input type="text" size="5" name="price" value="<?php echo $course['price']; ?>"  /></td>
-                        <td><input name="start" size="16" type="text" value="<?php echo htmlentities(date( 'd/m/Y H:i', strtotime($course['start'])), ENT_QUOTES, 'UTF-8'); ?>"></td>
-                        <td><input name="end" size="16" type="text" value="<?php echo htmlentities(date( 'd/m/Y H:i', strtotime($course['end'])), ENT_QUOTES, 'UTF-8'); ?>"></td>
-                        <td><input type="submit" value="Save" /> </td>
+                        <td><input type="text" size="3" class="form-control" name="price" value="<?php echo $course['price']; ?>"  /></td>
+                        <td><input type="text" size="3" class="form-control" name="max" value="<?php echo $course['max']; ?>"  /></td>
+                        <td><input name="start" size="12" type="text" value="<?php echo htmlentities(date( 'Y-m-d H:i', strtotime($course['start'])), ENT_QUOTES, 'UTF-8'); ?>" readonly class="form_datetime form-control"></td>
+                        <td><input name="end" size="12" type="text" value="<?php echo htmlentities(date( 'Y-m-d H:i', strtotime($course['end'])), ENT_QUOTES, 'UTF-8'); ?>" readonly class="form_datetime form-control"></td>
+                        <td><input type="submit" value="Save" class="btn-primary" /> </td>
                     </tr>  
                 </table>
             </form>
+            <script>
+                $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+            </script>
         </div>
     </div>
  </div>
@@ -114,7 +153,7 @@
     </div>
 </div>
 <div class="row">
-    <a href="users.php">Go back?</a>
+    <a href="courseManagement.php">Go back?</a>
 </div>
 <?php 
     require("postContent.php"); 

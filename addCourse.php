@@ -85,10 +85,10 @@
 <h1>Create Course</h1> 
 <form action="addCourse.php" method="post"> 
     Course Name:<br /> 
-    <input type="text" name="name" value=""/> 
+    <input type="text" name="name" value="" /> 
     <br /><br /> 
     Course Description:<br /> 
-    <td><textarea rows="4" cols="50" maxlength="20000" name="description"></textarea></td> 
+    <td><textarea rows="4" cols="50" maxlength="20000" name="description" class="form-control"></textarea></td> 
     <br /><br /> 
     Max attendance:<br /> 
     <input type="text" name="max" value="15"  /> 
