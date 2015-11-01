@@ -62,7 +62,8 @@
             <div class="panel-body">
                 <a href="users.php">Manage Users</a> <br />
                 <a href="courseManagement.php">Manage Courses</a><br />
-                <a href="locationManagement.php">Manage Locations</a>
+                <a href="locationManagement.php">Manage Locations</a><br />
+                <a href="addNews.php">Add News / Offer</a>
             </div>
         </div>
     </div>

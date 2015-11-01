@@ -1,6 +1,20 @@
 <?php
     $activePage = "home";
 	include('preContent.php');
+
+    $query = " 
+        SELECT DATE_FORMAT(date, '%d/%m/%Y') as date, content FROM news
+        ORDER BY date DESC
+    "; 
+     
+    try { 
+        $stmt = $db->prepare($query); 
+        $stmt->execute(); 
+    } catch(PDOException $ex) { 
+        die("Failed to run query: " . $ex->getMessage()); 
+    } 
+         
+    $rows = $stmt->fetchAll(); 
 ?>
 
 
@@ -30,42 +44,14 @@
             </div>
             <div class="panel-body" style="max-height: 300px;  overflow: scroll;">
                 <ul>
+                    <?php foreach($rows as $row): ?> 
                     <li>
                         <a href="#">
-                            <span class="glyphicon glyphicon-align-left text-success"> 25/10/15</span>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            <span class="glyphicon glyphicon-align-left text-success"><?php echo $row['date']; ?></span>
+                            <?php echo $row['content']; ?>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-info-sign text-danger"> 15/10/15</span>
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-comment text-warning"> 02/10/15</span>
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-edit text-danger"> 28/09/15</span>
-                            Sunt in culpa qui officia deserunt mollit anim id est laborum
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-edit text-warning"> 01/09/15</span>
-                            Lorem ipsum dolor sit amet ipsum dolor sit amet
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-edit text-success"> 20/08/15</span>
-                            Lorem ipsum dolor sit amet ipsum dolor sit amet
-                        </a>
-                    </li>
+                    <?php endforeach; ?> 
                 </ul>
             </div>
         </div>
