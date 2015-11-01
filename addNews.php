@@ -48,6 +48,10 @@ echo "News / Offer Successfully Created!";
 		</div>
 	</div>
 </form>
+
+<br />
+<br />
+<a href="newsManagement.php">Go back?</a>
 <?php
 include('postContent.php');
 ?>
