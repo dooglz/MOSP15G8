@@ -36,7 +36,13 @@
         } 
         if(empty($_POST['price'])) { 
             die("Please enter a course price"); 
-        } 
+        }
+        if(date('D', strtotime($_POST['start'])) == "Sun"){
+            die("Courses can't start on a Sunday");
+        }
+        if(strtotime($_POST['start']) > strtotime($_POST['end'])){
+            die("Start date must be before end date");
+        }
 
     	$query = " 
             INSERT INTO courses ( 
@@ -109,8 +115,8 @@
     <br /><br />
     End Date / Time <br />
     <input name="end" size="35" type="text" value="" readonly class="form_datetime">
-    <br /> 
-    <input type="submit" value="Create" /> 
+    <br /> <br />
+    <input type="submit" value="Create" class="btn-primary"/> 
 </form> 
 
 <script>
