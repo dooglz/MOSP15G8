@@ -66,7 +66,7 @@
                             <li><a <?php if($activePage == "home"){echo "class='menu-top-active' ";}?>href="index.php">Home</a></li>
                             <li><a <?php if($activePage == "courses"){echo "class='menu-top-active' ";}?>href="courses.php">Courses</a></li>
                             <li><a <?php if($activePage == "locations"){echo "class='menu-top-active' ";}?>href="allLocations.php">Locations</a></li>
-                            <li><a <?php if($activePage == "forum"){echo "class='menu-top-active' ";}?>href="#">Forum</a></li>
+                            <li><a <?php if($activePage == "forum"){echo "class='menu-top-active' ";}?>href="forum/">Forum</a></li>
                             <li><a <?php 
                                 if(!$loggedIn){
                                     if($activePage == "login"){echo 'class="menu-top-active" ';}
