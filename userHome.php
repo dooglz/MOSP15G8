@@ -40,15 +40,6 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Other stuff
-            </div>
-            <div class="panel-body">
-            </div>
-        </div>
-    </div>
  </div>
 <div class="row">
 	<a href="logOut.php"><button class="btn btn-info">Log Out</button></a>
