@@ -19,6 +19,7 @@
 
 
 <div class="col-md-6">
+  <h5>This web site is for demonstration purposes only and is part of an academic coursework for Managing Software Projects at the School of Computing Edinburgh Napier University</h5>
   <h4>About us</h4>
   <p>
     Napier Management Training ia a company who specialises in delivering world class management training programmes. 
@@ -56,7 +57,8 @@
             </div>
         </div>
     </div>
-</div>         
+</div>  
+
 <?php
 	include('postContent.php');
 ?>
