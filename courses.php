@@ -51,7 +51,7 @@
 
 
 <br /> <br />
-<b>You can sign up for courses offline by sending <a href="offline-pdf.pdf">this application form</a> to the enclosed address, with a cheque written out to "Napier Management Training".</b>
+<b>You can sign up for courses offline by sending <a href="offline-pdf.pdf" target="_blank">this application form</a> to the enclosed address, with a cheque written out to "Napier Management Training".</b>
 <?php
     	include('postContent.php');
 ?>
