@@ -10,8 +10,7 @@
   $query = "SELECT c.id, c.title, c.price, c.maxEnrolled, c.start, c.end, l.name AS locName, l.id AS locId
   FROM courses as c 
   INNER JOIN locations AS l ON c.location = l.id
-  WHERE c.status = 1
-  ORDER BY c.start ASC"; 
+  WHERE c.status = 1 and c.start >= NOW()"; 
   
   try { 
     $stmt = $db->prepare($query); 
