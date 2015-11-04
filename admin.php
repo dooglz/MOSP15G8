@@ -63,7 +63,7 @@
                 <a href="users.php">Manage Users</a> <br />
                 <a href="courseManagement.php">Manage Courses</a><br />
                 <a href="locationManagement.php">Manage Locations</a><br />
-                <a href="newsManagement.php">Manage News / Offers</a>
+                <a href="newsManagement.php">Manage News / Offers</a><br />
                 <a href="outbox.php">Email outbox</a>
             </div>
         </div>

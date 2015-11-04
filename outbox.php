@@ -12,7 +12,7 @@
 <table class="table"> 
     <tr> 
         <th>Email</th> 
-        <th>subject</th> 
+        <th>Subject</th> 
     </tr> 
     
   <?php
@@ -47,7 +47,7 @@
     echo "<tr><td>";
     echo $user['email'];
     echo "</td><td>";
-    echo "You have been enroleld on course: ".$course['title'];
+    echo "You have been enrolled on course: ".$course['title'];
     echo "</td>/<tr>";
    }
   
