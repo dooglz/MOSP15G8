@@ -64,6 +64,7 @@
                 <a href="courseManagement.php">Manage Courses</a><br />
                 <a href="locationManagement.php">Manage Locations</a><br />
                 <a href="newsManagement.php">Manage News / Offers</a>
+                <a href="outbox.php">Email outbox</a>
             </div>
         </div>
     </div>
